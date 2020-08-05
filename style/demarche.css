@@ -1,0 +1,54 @@
+@font-face {
+    font-family: TitleHelvetica;
+    src: url(../font/HelveticaNeueLTStd-UltLt.otf);
+  }
+  @font-face {
+    font-family: SubTitleHelvetica;
+    src: url(../font/HelveticaNeueLTStd-Th.otf);
+  }
+  @font-face {
+    font-family: TextHelvetica;
+    src: url(../font/HelveticaNeueLTStd-Lt.otf);
+  }
+  h1 {
+    font-family: TitleHelvetica;
+    margin-top: 70px;
+    margin-left: 70px;
+    font-size: 36pt;
+  }
+  p {
+    font-family: TextHelvetica;
+    line-height: 12pt;
+    padding-left: 10px;
+    font-size: 12pt;
+    margin: 10px 0;
+    text-align: justify;
+  }
+  #bloc1 {
+    margin-left:10vw;
+    margin-right:51vw;
+    border-left: solid 1px black;
+  }
+  #bloc2 {
+    margin-left:51vw;
+    margin-right:10vw;
+    border-left: solid 1px black;
+  }
+  #bloc3 {
+    margin-left:10vw;
+    margin-right:51vw;
+    border-left: solid 1px black;
+  }
+  #bloc4 {
+    margin-left:51vw;
+    margin-right:10vw;
+    border-left: solid 1px black;
+  }
+  #credit {
+    font-size: 8pt;
+    position: absolute;
+    right: 1px;
+    bottom: 0;
+    font-family: TitleHelvetica;
+    color: grey;
+  }

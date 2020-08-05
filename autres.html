@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autres</title>
+    <link rel="stylesheet" href="style/caroussel.css">
+  </head>
+  <body>
+    <h1>
+      Galerie
+      <span id="subtitle">Autres</span>
+    </h1>
+
+    <img
+      id="arrowLeft"
+      class="arrow"
+      src="GraphicComponent/arrowLeft.png"
+      onclick="decrementation()"
+    />
+    <div class="loading-bar"></div>
+
+    <iframe
+      id="autres"
+      class="caroussel"
+      src="autres/autres0.html"
+      title="autres"
+      frameborder="0"
+    ></iframe>
+    <img
+      id="arrowRight"
+      class="arrow"
+      src="GraphicComponent/arrowRight.png"
+      onclick="incrementation()"
+    />
+    <p id="credit">Front Developper : Rachel Roux</p>
+    <script type="text/javascript">
+      var index = 0;
+      var nbrAutres = 0;
+      var imageAutres = document.getElementById("autres");
+      var progressBar = document.getElementsByClassName("loading-bar");
+      //imageAutres.addEventListener("load", create);
+      //imageAutres.addEventListener("error", del, { once: true });
+      fetch(imageAutres.src).then(create).catch(del);
+      function create(responses) {
+        if (responses.ok == true) {
+          nbrAutres++;
+          console.log(nbrAutres);
+          imageAutres.src = "autres/autres" + nbrAutres + ".html";
+          fetch(imageAutres.src).then(create).catch(del);
+        } else {
+          nbrAutres--;
+          imageAutres.src = "autres/autres0.html";
+          imageAutres.style.display = "block";
+          progressBar[0].style.display = "none";
+        }
+      }
+      function del() {
+        nbrAutres = 0;
+        imageAutres.src = "autres/autres0.html";
+        imageAutres.style.display = "block";
+        progressBar[0].style.display = "none";
+      }
+
+      function incrementation() {
+        index++;
+        if (index > nbrAutres) {
+          index = 0;
+        }
+        imageAutres.src = "autres/autres" + index + ".html";
+      }
+
+      function decrementation() {
+        index--;
+        if (index < 0) {
+          index = nbrAutres;
+          imageAutres.src = "autres/autres" + nbrAutres + ".html";
+        } else imageAutres.src = "autres/autres" + index + ".html";
+      }
+    </script>
+  </body>
+</html>

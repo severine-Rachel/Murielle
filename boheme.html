@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boheme</title>
+    <link rel="stylesheet" href="style/caroussel.css">
+  </head>
+  <body>
+    <h1>
+      Galerie
+      <span id="subtitle">Bohème</span>
+    </h1>
+
+    <img
+      id="arrowLeft"
+      class="arrow"
+      src="GraphicComponent/arrowLeft.png"
+      onclick="decrementation()"
+    />
+    <div class="loading-bar"></div>
+
+    <iframe
+      id="boheme"
+      class="caroussel"
+      src="boheme/boheme0.html"
+      title="boheme"
+      frameborder="0"
+    ></iframe>
+    <img
+      id="arrowRight"
+      class="arrow"
+      src="GraphicComponent/arrowRight.png"
+      onclick="incrementation()"
+    />
+    <p id="credit">Front Developper : Rachel Roux</p>
+    <script type="text/javascript">
+      var index = 0;
+      var nbrBoheme = 0;
+      var imageBoheme = document.getElementById("boheme");
+      var progressBar = document.getElementsByClassName("loading-bar");
+      //imageBoheme.addEventListener("load", create);
+      //imageBoheme.addEventListener("error", del, { once: true });
+      fetch(imageBoheme.src).then(create).catch(del);
+      function create(responses) {
+        if (responses.ok == true) {
+          nbrBoheme++;
+          console.log(nbrBoheme);
+          imageBoheme.src = "boheme/boheme" + nbrBoheme + ".html";
+          fetch(imageBoheme.src).then(create).catch(del);
+        } else {
+          nbrBoheme--;
+          imageBoheme.src = "boheme/boheme0.html";
+          imageBoheme.style.display = "block";
+          progressBar[0].style.display = "none";
+        }
+      }
+      function del() {
+        nbrBoheme = 0;
+        imageBoheme.src = "boheme/boheme0.html";
+        imageBoheme.style.display = "block";
+        progressBar[0].style.display = "none";
+      }
+
+      function incrementation() {
+        index++;
+        if (index > nbrBoheme) {
+          index = 0;
+        }
+        imageBoheme.src = "boheme/boheme" + index + ".html";
+      }
+
+      function decrementation() {
+        index--;
+        if (index < 0) {
+          index = nbrBoheme;
+          imageBoheme.src = "boheme/boheme" + nbrBoheme + ".html";
+        } else imageBoheme.src = "boheme/boheme" + index + ".html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+@font-face {
+    font-family: TitleHelvetica;
+    src: url(../font/HelveticaNeueLTStd-UltLt.otf);
+  }
+  @font-face {
+    font-family: MenuHelvetica;
+    src: url(../font/HelveticaNeueLTStd-Th.otf);
+  }
+ 
+  h1 {
+    font-family: TitleHelvetica;
+    margin-top: 70px;
+    margin-left: 70px;
+    font-size: 36pt;
+  }
+  #menu-galerie {
+    border-left: solid 1px black;
+    margin-left: 70px;
+    font-size: 18pt;
+  }
+  #menu-galerie,
+  #menu-galerie ul {
+    font-family: MenuHelvetica;
+    padding: 0;
+    list-style: none;
+    width: 180px;
+  }
+  #menu-galerie li {
+    position: relative;
+    margin: 0 10px;
+    padding: 20px 0;
+  }
+  #menu-galerie a {
+    display: block;
+    text-decoration: none;
+    color: black;
+  }
+  #menu-galerie ul {
+    position: absolute;
+    display: none;
+  }
+  @keyframes scale {
+    from {
+      font-size: 18pt;
+    }
+    to {
+      font-size: 24pt;
+    }
+  }
+  @keyframes notscale {
+    from {
+      font-size: 24pt;
+    }
+    to {
+      font-size: 18pt;
+    }
+  }
+  #menu-galerie li:hover {
+    animation: scale 1s;
+    font-size: 24pt;
+  }
+  #menu-galerie li:not(:hover) {
+    animation: notscale 1s;
+  }
+  
+  #credit {
+    font-size: 8pt;
+    position: absolute;
+    right: 1px;
+    bottom: 0;
+    font-family: TitleHelvetica;
+    color: grey;
+  }

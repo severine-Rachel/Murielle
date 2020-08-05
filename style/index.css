@@ -1,0 +1,118 @@
+@font-face {
+  font-family: TitleHelvetica;
+  src: url(../font/HelveticaNeueLTStd-UltLt.otf);
+}
+@font-face {
+  font-family: MenuHelvetica;
+  src: url(../font/HelveticaNeueLTStd-Th.otf);
+}
+@font-face {
+  font-family: SubMenuHelvetica;
+  src: url(../font/HelveticaNeueLTStd-Lt.otf);
+}
+h1 {
+  font-family: TitleHelvetica;
+  margin-top: 70px;
+  margin-left: 70px;
+  font-size: 36pt;
+}
+#menu-vertical {
+  border-left: solid 1px black;
+  margin-left: 70px;
+  font-size: 18pt;
+  display: block;
+}
+#menu-vertical,
+#menu-vertical ul {
+  font-family: MenuHelvetica;
+  padding: 0;
+  list-style: none;
+  width: 180px;
+}
+#menu-vertical > li {
+  position: relative;
+  margin: 0 10px;
+  padding: 20px 0;
+  display: block;
+}
+#menu-vertical a {
+  text-decoration: none;
+}
+#menu-vertical > li > a {
+  color: black;
+}
+#menu-vertical ul {
+  position: absolute;
+  display: none;
+}
+@keyframes scale {
+  from {
+    font-size: 18pt;
+  }
+  to {
+    font-size: 24pt;
+  }
+}
+@keyframes notscale {
+  from {
+    font-size: 24pt;
+  }
+  to {
+    font-size: 18pt;
+  }
+}
+@keyframes color {
+  from {
+    color: white;
+  }
+  to {
+    color: black;
+  }
+}
+#menu-vertical > li:hover {
+  animation: scale 0.5s;
+  font-size: 24pt;
+}
+#menu-vertical > li:not(:hover) {
+  animation: notscale 0.5s;
+}
+#menu-vertical li:hover ul {
+  top: 0;
+  margin: 0px 120px;
+  padding: 0;
+  display: block;
+}
+#menu-vertical li:hover ul > li {
+  font-family: SubMenuHelvetica;
+  font-size: 12pt;
+  display: block;
+}
+#menu-vertical li:hover ul > li:hover > a {
+  transform: scale(1.1);
+}
+#menu-vertical li:hover ul > li > a {
+  animation: color 1s linear 0.2s forwards;
+  display: inline-block;
+  color: white;
+}
+@media (min-width: 400px) {
+  #fresque {
+    position: absolute;
+    height: 100%;
+    right: 200px;
+    top: 0;
+  }
+}
+@media (max-width: 400px) {
+  #fresque {
+    display: none;
+  }
+}
+#credit {
+  font-size: 8pt;
+  position: absolute;
+  right: 1px;
+  bottom: 0;
+  font-family: TitleHelvetica;
+  color: grey;
+}

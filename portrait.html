@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portrait</title>
+    <link rel="stylesheet" href="style/caroussel.css">
+  </head>
+  <body>
+    <h1>
+      Galerie
+      <span id="subtitle">Portrait</span>
+    </h1>
+
+    <img
+      id="arrowLeft"
+      class="arrow"
+      src="GraphicComponent/arrowLeft.png"
+      onclick="decrementation()"
+    />
+    <div class="loading-bar"></div>
+
+    <iframe
+      id="portrait"
+      class="caroussel"
+      src="portrait/portrait0.html"
+      title="portrait"
+      frameborder="0"
+    ></iframe>
+    <img
+      id="arrowRight"
+      class="arrow"
+      src="GraphicComponent/arrowRight.png"
+      onclick="incrementation()"
+    />
+    <p id="credit">Front Developper : Rachel Roux</p>
+    <script type="text/javascript">
+      var index = 0;
+      var nbrPortrait = 0;
+      var imagePortrait = document.getElementById("portrait");
+      var progressBar = document.getElementsByClassName("loading-bar");
+      //imagePortrait.addEventListener("load", create);
+      //imagePortrait.addEventListener("error", del, { once: true });
+      fetch(imagePortrait.src).then(create).catch(del);
+      function create(responses) {
+        if (responses.ok == true) {
+          nbrPortrait++;
+          console.log(nbrPortrait);
+          imagePortrait.src = "portrait/portrait" + nbrPortrait + ".html";
+          fetch(imagePortrait.src).then(create).catch(del);
+        } else {
+          nbrPortrait--;
+          imagePortrait.src = "portrait/portrait0.html";
+          imagePortrait.style.display = "block";
+          progressBar[0].style.display = "none";
+        }
+      }
+      function del() {
+        nbrPortrait = 0;
+        imagePortrait.src = "portrait/portrait0.html";
+        imagePortrait.style.display = "block";
+        progressBar[0].style.display = "none";
+      }
+
+      function incrementation() {
+        index++;
+        if (index > nbrPortrait) {
+          index = 0;
+        }
+        imagePortrait.src = "portrait/portrait" + index + ".html";
+      }
+
+      function decrementation() {
+        index--;
+        if (index < 0) {
+          index = nbrPortrait;
+          imagePortrait.src = "portrait/portrait" + nbrPortrait + ".html";
+        } else imagePortrait.src = "portrait/portrait" + index + ".html";
+      }
+    </script>
+  </body>
+</html>

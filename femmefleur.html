@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Femme Fleur</title>
+    <link rel="stylesheet" href="style/caroussel.css">
+  </head>
+  <body>
+    <h1>
+      Galerie
+      <span id="subtitle">Femme Fleur</span>
+    </h1>
+
+    <img
+      id="arrowLeft"
+      class="arrow"
+      src="GraphicComponent/arrowLeft.png"
+      onclick="decrementation()"
+    />
+    <div class="loading-bar"></div>
+
+    <iframe
+      id="fleur"
+      class="caroussel"
+      src="femmefleur/fleur0.html"
+      title="fleur"
+      frameborder="0"
+    ></iframe>
+    <img
+      id="arrowRight"
+      class="arrow"
+      src="GraphicComponent/arrowRight.png"
+      onclick="incrementation()"
+    />
+    <p id="credit">Front Developper : Rachel Roux</p>
+    <script type="text/javascript">
+      var index = 0;
+      var nbrFleur = 0;
+      var imageFleur = document.getElementById("fleur");
+      var progressBar = document.getElementsByClassName("loading-bar");
+      //imageFleur.addEventListener("load", create);
+      //imageFleur.addEventListener("error", del, { once: true });
+      fetch(imageFleur.src).then(create).catch(del);
+      function create(responses) {
+        if (responses.ok == true) {
+          nbrFleur++;
+          console.log(nbrFleur);
+          imageFleur.src = "femmefleur/fleur" + nbrFleur + ".html";
+          fetch(imageFleur.src).then(create).catch(del);
+        } else {
+          nbrFleur--;
+          imageFleur.src = "femmefleur/fleur0.html";
+          imageFleur.style.display = "block";
+          progressBar[0].style.display = "none";
+        }
+      }
+      function del() {
+        nbrFleur = 0;
+        imageFleur.src = "femmefleur/fleur0.html";
+        imageFleur.style.display = "block";
+        progressBar[0].style.display = "none";
+      }
+
+      function incrementation() {
+        index++;
+        if (index > nbrFleur) {
+          index = 0;
+        }
+        imageFleur.src = "femmefleur/fleur" + index + ".html";
+      }
+
+      function decrementation() {
+        index--;
+        if (index < 0) {
+          index = nbrFleur;
+          imageFleur.src = "femmefleur/fleur" + nbrFleur + ".html";
+        } else imageFleur.src = "femmefleur/fleur" + index + ".html";
+      }
+    </script>
+  </body>
+</html>

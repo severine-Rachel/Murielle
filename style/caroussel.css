@@ -1,0 +1,79 @@
+@font-face {
+    font-family: TitleHelvetica;
+    src: url(../font/HelveticaNeueLTStd-UltLt.otf);
+  }
+  @font-face {
+    font-family: SubTitleHelvetica;
+    src: url(../font/HelveticaNeueLTStd-Lt.otf);
+  }
+  h1 {
+    font-family: TitleHelvetica;
+    margin-top: 70px;
+    margin-left: 70px;
+    font-size: 36pt;
+  }
+  #subtitle {
+    font-family: SubTitleHelvetica;
+    font-size: 18pt;
+  }
+  .arrow {
+    position: absolute;
+    top: 400px;
+    width: 5vw;
+    cursor: pointer;
+  }
+  .arrow:hover {
+    transform: scale(1.1);
+  }
+  #arrowRight {
+    right: 8px;
+  }
+  .caroussel {
+    width: 2000px;
+    height:1000px;
+    max-width: 90vw;
+    max-height: 75vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+  }
+  @keyframes loadbar {
+    0% {
+      left: -50px;
+      top: 250px;
+    }
+    25% {
+      left: 50px;
+      top: 250px;
+    }
+    50% {
+      left: 50px;
+      top: 350px;
+    }
+    75% {
+      left: -50px;
+      top: 350px;
+    }
+    100% {
+      left: -50px;
+      top: 250px;
+    }
+  }
+  .loading-bar {
+    width: 10px;
+    height: 10px;
+    background-color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    display: block;
+    animation: loadbar 2s linear infinite;
+  }
+  #credit {
+    font-size: 8pt;
+    position: absolute;
+    right: 1px;
+    bottom: 0;
+    font-family: TitleHelvetica;
+    color: grey;
+  }

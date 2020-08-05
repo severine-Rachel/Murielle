@@ -1,0 +1,36 @@
+@font-face {
+  font-family: TitleHelvetica;
+  src: url(../font/HelveticaNeueLTStd-UltLt.otf);
+}
+@font-face {
+  font-family: TextHelvetica;
+  src: url(../font/HelveticaNeueLTStd-Lt.otf);
+}
+h1 {
+  font-family: TitleHelvetica;
+  margin-top: 70px;
+  margin-left: 70px;
+  font-size: 36pt;
+}
+#contact {
+  border-left: solid 1px black;
+  margin-left: 70px;
+  height: 285px;
+}
+p {
+  font-size: 12pt;
+  font-family: TextHelvetica;
+  padding-left: 10px;
+  line-height: 6pt;
+}
+span {
+  font-size: 14pt;
+}
+#credit {
+  font-size: 8pt;
+  position: absolute;
+  right: 1px;
+  bottom: 0;
+  font-family: TitleHelvetica;
+  color: grey;
+}
